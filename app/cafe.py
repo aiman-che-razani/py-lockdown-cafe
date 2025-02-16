@@ -17,20 +17,20 @@ class Cafe:
         # Check if the visitor has been vaccinated
         if "vaccine" not in visitor:
             raise NotVaccinatedError(
-                f"{visitor["name"]} is not vaccinated."
+                "{} is not vaccinated.".format(visitor["name"])
             )
 
         # Check if the vaccine is expired
         expiration_date = visitor["vaccine"].get("expiration_date")
         if expiration_date < datetime.date.today():
             raise OutdatedVaccineError(
-                f"{visitor["name"]}'s vaccine is outdated."
+                "{}'s vaccine is outdated.".format(visitor["name"])
             )
 
         # Check if the visitor is wearing a mask
         if not visitor.get("wearing_a_mask", False):
             raise NotWearingMaskError(
-                f"{visitor["name"]} is not wearing a mask."
+                "{} is not wearing a mask.".format(visitor["name"])
             )
 
-        return f"Welcome to {self.name}"
+        return "Welcome to {}".format(self.name)
